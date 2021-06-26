@@ -1,0 +1,10 @@
+language: ruby
+
+services:
+  - docker
+
+before_install:
+- docker build . -t test_wxt_vim
+
+script:
+- echo 'tested'
