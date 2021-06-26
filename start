@@ -27,16 +27,11 @@ four
 five
 EOF
   vim -s vim.keys this.file
-  echo results
-  cat $TMP/this.file
-  echo END results
   diff $TMP/this.result $TMP/this.file &> /dev/null
 	if [[ $? == 0 ]]
 	then
-    echo success
     exit 0
 	else
-    echo failure
     exit 1
 	fi
 }
