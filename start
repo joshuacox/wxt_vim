@@ -9,6 +9,38 @@ infoer () {
   vim --version
 }
 
+test1 () {
+  TMP=$(mktemp -d)
+  cd $TMP
+cat <<EOF > $TMP/vim.keys
+ggwxjddZZ
+EOF
+cat <<EOF > $TMP/this.file
+one two
+three
+four
+five
+EOF
+cat <<EOF > $TMP/this.result
+one wo
+four
+five
+EOF
+  vim -s vim.keys this.file
+  echo results
+  cat $TMP/this.file
+  echo END results
+  diff $TMP/this.result $TMP/this.file &> /dev/null
+	if [[ $? == 0 ]]
+	then
+    echo success
+    exit 0
+	else
+    echo failure
+    exit 1
+	fi
+}
+
 for item in "$@" ; do
     #process item
   if [[ $item == 'version' ]]; then
@@ -16,7 +48,7 @@ for item in "$@" ; do
     shift;
   elif [[ $1 == 'ci' ]]; then
     infoer
-    exit 0
+    test1
   elif [[ $1 == 'bash' ]]; then
     /bin/bash -l
     shift;
