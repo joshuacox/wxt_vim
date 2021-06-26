@@ -41,10 +41,10 @@ for item in "$@" ; do
   if [[ $item == 'version' ]]; then
     infoer
     shift;
-  elif [[ $1 == 'ci' ]]; then
+  elif [[ $item == 'ci' ]]; then
     infoer
     test1
-  elif [[ $1 == 'bash' ]]; then
+  elif [[ $item == 'bash' ]]; then
     /bin/bash -l
     shift;
   elif [[ $item == 'looper' ]]; then
