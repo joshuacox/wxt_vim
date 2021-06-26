@@ -7,4 +7,4 @@ before_install:
 - docker build . -t test_wxt_vim
 
 script:
-- vim --version
+- docker run -it test_wxt_vim -- vim --version

@@ -1,0 +1,21 @@
+#!/bin/bash
+sooperlooper () {
+  while true; do sleep 10;done
+  exit 1
+}
+if [[ $1 == 'version' ]]; then
+  vim --version
+  shift;
+fi
+if [[ $1 == 'looper' ]]; then
+  sooperlooper
+elif [[ $1 == 'ci' ]]; then
+  vim --version
+  exit 0
+elif [[ $1 == 'bash' ]]; then
+  /bin/bash -l
+  exit 0
+else
+  echo "unkown args $@"
+  exit 1
+fi
