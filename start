@@ -26,7 +26,7 @@ one wo
 four
 five
 EOF
-  vim -s vim.keys this.file
+  vim -s vim.keys this.file &> /dev/null
   diff $TMP/this.result $TMP/this.file &> /dev/null
 	if [[ $? == 0 ]]
 	then
